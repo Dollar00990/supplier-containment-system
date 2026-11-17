@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Suppliers</h2>
+
+<a href="{% url 'supplier_create' %}"
+   class="btn btn-primary mb-3">
+    Add Supplier
+</a>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    {% for supplier in suppliers %}
+
+        <tr>
+            <td>{{ supplier.supplier_code }}</td>
+            <td>{{ supplier.name }}</td>
+            <td>{{ supplier.contact_person }}</td>
+            <td>{{ supplier.email }}</td>
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}
