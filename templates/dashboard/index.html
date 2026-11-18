@@ -9,6 +9,45 @@
 </div>
 
 <div class="row">
+<div class="row mb-4">
+
+    <div class="col-md-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h3>{{ supplier_count }}</h3>
+                Suppliers
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h3>{{ containment_count }}</h3>
+                Containments
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-danger text-white">
+            <div class="card-body">
+                <h3>{{ open_containments }}</h3>
+                Open Issues
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-warning">
+            <div class="card-body">
+                <h3>{{ pending_requests }}</h3>
+                Inspector Requests
+            </div>
+        </div>
+    </div>
+
+</div>
 
     <div class="col-md-3">
         <a href="{% url 'supplier_list' %}"
@@ -37,6 +76,30 @@
 
         </a>
     </div>
+
+    <div class="col-md-3">
+
+    <a href="{% url 'containment_list' %}"
+       class="text-decoration-none text-dark">
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <h5>Containments</h5>
+
+                <p>
+                    Manage Supplier Issues
+                </p>
+
+            </div>
+
+        </div>
+
+    </a>
+
+</div>
+
 
 </div>
 

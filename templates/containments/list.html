@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Containments</h2>
+
+<a href="{% url 'containment_create' %}"
+   class="btn btn-primary mb-3">
+    Create Containment
+</a>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Supplier</th>
+            <th>Status</th>
+            <th>Qty</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    {% for containment in containments %}
+
+        <tr>
+
+            <td>{{ containment.title }}</td>
+
+            <td>{{ containment.supplier }}</td>
+
+            <td>
+
+                {% if containment.status == 'open' %}
+                    <span class="badge bg-danger">
+                        Open
+                    </span>
+
+                {% elif containment.status == 'in_progress' %}
+                    <span class="badge bg-warning">
+                        In Progress
+                    </span>
+
+                {% else %}
+                    <span class="badge bg-success">
+                        Closed
+                    </span>
+                {% endif %}
+
+            </td>
+
+            <td>
+                {{ containment.suspect_quantity }}
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}
