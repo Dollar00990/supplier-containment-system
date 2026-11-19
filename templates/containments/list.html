@@ -25,8 +25,17 @@
     {% for containment in containments %}
 
         <tr>
+            
+            <td>
 
-            <td>{{ containment.title }}</td>
+                <a href="{% url 'containment_detail' containment.id %}">
+
+                    {{ containment.title }}
+
+                </a>
+
+            </td>
+                        
 
             <td>{{ containment.supplier }}</td>
 

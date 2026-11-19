@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>My Assignments</h2>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+
+            <th>Containment</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+
+    {% for assignment in assignments %}
+
+        <tr>
+
+            <td>
+                {{ assignment.containment }}
+            </td>
+
+            <td>
+
+                {% if assignment.status == 'pending' %}
+
+                    <span class="badge bg-warning">
+                        Pending
+                    </span>
+
+                {% elif assignment.status == 'accepted' %}
+
+                    <span class="badge bg-success">
+                        Accepted
+                    </span>
+
+                {% else %}
+
+                    <span class="badge bg-danger">
+                        Declined
+                    </span>
+
+                {% endif %}
+
+            </td>
+
+            <td>
+                {{ assignment.created_at }}
+            </td>
+
+        </tr>
+        <td>
+
+    <a
+      href="{% url 'accept_assignment' assignment.id %}"
+      class="btn btn-success btn-sm">
+
+      Accept
+
+    </a>
+
+    <a
+      href="{% url 'decline_assignment' assignment.id %}"
+      class="btn btn-danger btn-sm">
+
+      Decline
+
+    </a>
+
+</td>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

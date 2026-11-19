@@ -1,12 +1,11 @@
 from django.urls import path
-
 from .views import (
     containment_list,
-    containment_create
+    containment_create,
+    containment_detail,
 )
 
 urlpatterns = [
-
     path(
         "containments/",
         containment_list,
@@ -19,4 +18,9 @@ urlpatterns = [
         name="containment_create"
     ),
 
+    path(
+        "containments/<int:pk>/",
+        containment_detail,
+        name="containment_detail"
+    ),
 ]

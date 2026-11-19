@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from inspections.models import InspectorRequest
 
 from .models import Containment
 from .forms import ContainmentForm
@@ -47,5 +48,25 @@ def containment_create(request):
         "containments/create.html",
         {
             "form": form
+        }
+    )
+@login_required
+def containment_detail(request, pk):
+
+    containment = get_object_or_404(
+        Containment,
+        pk=pk
+    )
+
+    inspector_requests = InspectorRequest.objects.filter(
+        containment=containment
+    )
+
+    return render(
+        request,
+        "containments/detail.html",
+        {
+            "containment": containment,
+            "inspector_requests": inspector_requests,
         }
     )
